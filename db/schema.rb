@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_04_21_192050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "devices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reparation_requests", force: :cascade do |t|
+    t.bigint "store_id", null: false
+    t.integer "device"
+    t.string "status", default: "pending"
+    t.date "purchase_installation_date"
+    t.text "issue_description"
+    t.string "model_number"
+    t.string "requester_zip_code"
+    t.string "requester_address"
+    t.string "requester_first_name"
+    t.string "requester_last_name"
+    t.string "requester_email"
+    t.string "requester_telephone"
+    t.string "requester_country"
+    t.string "requester_state"
+    t.string "requester_city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_reparation_requests_on_store_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.integer "priority"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "reparation_requests", "stores"
 end
