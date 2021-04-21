@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store: one
+  device: 1
+  status: MyString
+  purchase_installation_date: 2021-04-21
+  issue_description: MyText
+  model_number: MyString
+  requester_zip_code: MyString
+  requester_address: MyString
+  requester_first_name: MyString
+  requester_last_name: MyString
+  requester_email: MyString
+  requester_telephone: MyString
+  requester_country: MyString
+  requester_state: MyString
+  requester_city: MyString
+
+two:
+  store: two
+  device: 1
+  status: MyString
+  purchase_installation_date: 2021-04-21
+  issue_description: MyText
+  model_number: MyString
+  requester_zip_code: MyString
+  requester_address: MyString
+  requester_first_name: MyString
+  requester_last_name: MyString
+  requester_email: MyString
+  requester_telephone: MyString
+  requester_country: MyString
+  requester_state: MyString
+  requester_city: MyString
