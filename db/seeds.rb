@@ -39,3 +39,20 @@ devices = Device.all
   Store.find_or_create_by(store_data).devices << devices.sample(30)
 end
 puts "End seeding stores"
+
+# Create 10 users
+puts "Start seeding users"
+  stores = Store.all
+  stores.each do |store|
+    name = Faker::Name.unique.name
+    email = "user#{store.priority}@mail.com"
+    password = "123456"
+    user_data = {
+      store: store,
+      name: name,
+      email: email,
+      password: password
+    }
+    User.create(user_data)
+  end
+puts "End seeding users"
