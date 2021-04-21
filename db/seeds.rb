@@ -25,3 +25,17 @@ puts "Start seeding devices"
     Device.find_or_create_by({name: device})
   end 
 puts "End seeding devices"
+
+# Create 10 stores
+puts "Start seeding stores"
+devices = Device.all
+10.times do
+  priority = Faker::Number.unique.between(from: 1, to: 10)
+  address = Faker::Address.unique.street_address
+  store_data = {
+    priority: priority,
+    address: address
+  }
+  Store.find_or_create_by(store_data).devices << devices.sample(30)
+end
+puts "End seeding stores"
