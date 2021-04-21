@@ -56,3 +56,40 @@ puts "Start seeding users"
     User.create(user_data)
   end
 puts "End seeding users"
+
+# Create 10 Reparation request for the store with priority 1
+puts "Start seeding reparation requests"
+10.times do
+  store_id = Store.find_by(priority: 1).id
+  device = Store.find_by(priority: 1).devices.map{|device| device.id}.sample
+  purchase_installation_date = Faker::Date.between(from: 1.year.ago, to: Date.today)
+  issue_description = Faker::Lorem.paragraph_by_chars(number: 500, supplemental: false)
+  model_number = Faker::Code.nric
+  requester_zip_code = Faker::Address.zip_code
+  requester_address = Faker::Address.street_address
+  requester_first_name = Faker::Name.unique.first_name
+  requester_last_name = Faker::Name.unique.last_name
+  requester_email = Faker::Internet.unique.email
+  requester_telephone = Faker::PhoneNumber.cell_phone_in_e164.gsub('+','')
+  requester_country = "EE.UU"
+  requester_state = Faker::Address.state
+  requester_city = Faker::Address.city
+  reparation_request_data = {
+    store_id: store_id,
+    device: device,
+    purchase_installation_date: purchase_installation_date,
+    issue_description: issue_description,
+    model_number: model_number,
+    requester_zip_code: requester_zip_code,
+    requester_address: requester_address,
+    requester_first_name: requester_first_name,
+    requester_last_name: requester_last_name,
+    requester_email: requester_email,
+    requester_telephone: requester_telephone,
+    requester_country: requester_country,
+    requester_state: requester_state,
+    requester_city: requester_city,
+  }
+  ReparationRequest.find_or_create_by(reparation_request_data)
+end
+puts "End seeding reparation requests"
