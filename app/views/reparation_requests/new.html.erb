@@ -1,0 +1,172 @@
+<div class="main-container">
+  <div class="hero">
+    <h1 class="main-title">Request a Repair</h1>
+  </div>
+
+  <div class="request-form-container">
+    <%= form_with model: @reparation_request, local: true do |form| %>
+      <% if @reparation_request.errors.any? %>
+        <% @errors = @reparation_request.errors %>
+      <% end %>
+
+      <div class="request-form__section">
+        <h2 class="request-form__section__title">STEP 1. Device information</h2>
+        
+        <div class="request-form__section-01">
+          <div class="section-01__division">
+            <div class="request-form__field">
+              <div><%= form.label :device %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:device).each do |error| %>
+                    <p class="request-form__errors"><%= error %></p>
+                  <% end %>
+                <% end %>
+              <%= form.collection_select :device, Device.all, :id, :name, include_blank: 'Please select' %> 
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :model_number %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:model_number).each do |error| %>
+                    <p class="request-form__errors"><%= error %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :model_number, placeholder: "Insert a model" %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :purchase_or_installation_date %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:purchase_installation_date).each do |error| %>
+                    <p class="request-form__errors"><%= error %></p>
+                  <% end %>
+                <% end %>
+              <%= form.date_field :purchase_installation_date %>
+            </div>
+          </div>
+          
+          <div class="section-01__division">
+            <div class="request-form__field">
+              <div><%= form.label :issue_description %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:issue_description).each do |error| %>
+                    <p class="request-form__errors"><%= error %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_area :issue_description %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="request-form__section">
+        <h2 class="request-form__section__title">STEP 2. Contact information</h2>
+        
+        <div class="request-form__section-02">
+          <div class="section-02__division">
+            <div class="request-form__field">
+              <div><%= form.label :first_name %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_first_name).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_first_name %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :last_name %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_last_name).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_last_name %>
+            </div>
+          </div>
+
+          <div class="section-02__division">
+            <div class="request-form__field">
+              <div><%= form.label :zip_code %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_zip_code).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_zip_code %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :city %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_city).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_city %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :state %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_state).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_state %>
+            </div>
+          </div>
+
+          <div class="section-02__division">
+            <div class="request-form__field">
+              <div><%= form.label :address %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_address).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_address %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :country %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_country).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_country %>
+            </div>
+          </div>
+
+          <div class="section-02__division">
+            <div class="request-form__field">
+              <div><%= form.label :telephone %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_telephone).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_telephone, placeholder: "Enter number only" %>
+            </div>
+
+            <div class="request-form__field">
+              <div><%= form.label :email %><span class="required-field"> *</span></div>
+                <% if @errors %>
+                  <% @errors.full_messages_for(:requester_email).each do |error| %>
+                    <p class="request-form__errors"><%= error.gsub('Requester','').strip.capitalize() %></p>
+                  <% end %>
+                <% end %>
+              <%= form.text_field :requester_email, placeholder: "your@email.com" %>
+            </div>
+          </div>
+
+          <div class = "request-form__button">
+            <%= form.submit 'SEND' %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
