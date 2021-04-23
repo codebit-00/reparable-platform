@@ -1,4 +1,11 @@
 class ReparationRequestsController < ApplicationController
+  def index
+    return redirect_to new_reparation_request_path new unless current_user
+
+    @store = Store.find(current_user[:store_id])
+    @reparation_requests = @store.reparation_requests
+  end
+
   def new
     @reparation_request = ReparationRequest.new
   end
