@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@400;700&display=swap');
+
+ :root {
+   --font-primary: 'Roboto', sans-serif;
+   --font-secondary: 'Lato', sans-serif;
+   --white: #FFFFFF;
+   --black: #333333;
+   --blue: #005ab7;
+   --ligth-blue: #006db7;
+   --green: #00b74b;
+   --red: #a50034;
+   --gray: #949494;
+   --dark-gray: #3f3f3f;
+   --border-gray: #e4e4e4;
+   --background-gray: #f8f8f8;
+ }
+ 
+ * {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+ }
+ 
+ body {
+   font-family: var(--font-primary);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: var(--background-gray);
+ }
+ 
+ .main-container {
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+ }
+ 
+ header {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 8px 32px;
+   background: var(--white);
+   position: relative;
+ }
+ 
+ .logo img {
+   width: 300px;
+ }
+ 
+ .header-link a {
+   font-family: var(--font-primary);
+   font-weight: 700;
+   font-size: 16px;
+   color: var(--blue);
+   text-decoration: none;
+ }
+ 
+ .header-link a:hover {
+   color: var(--ligth-blue);
+ }
+ 
+ .welcome-title {
+   font-family: var(--font-primary);
+   font-weight: 700;
+   font-size: 16px;
+   color: var(--blue);
+   align-self: flex-start;
+   position: absolute;
+   left: 45%;
+ }
+ 
+ .welcome-title span {
+   color: var(--red);
+ }
+ 
+ label {
+   font-family: 'Lato', sans-serif;
+   font-weight: 700;
+ }
+ 
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover, 
+ input:-webkit-autofill:focus, 
+ input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--white) inset !important;
+ }
+ 
+ .main-subtitle {
+   width: 100%;
+   font-family: var(--font-primary);
+   font-weight: 700;
+   font-size: 36px;
+   padding: 16px 8px;
+   align-self: start;
+   color: var(--white);
+   background: var(--ligth-blue);
+   text-align: center;
+ }

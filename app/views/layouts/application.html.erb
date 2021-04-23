@@ -11,6 +11,22 @@
   </head>
 
   <body>
+    <header>
+      <div class="logo"><%= image_tag 'reparable_logo.png' %></div>
+      <% if current_user %>
+        <h1 class="welcome-title">Welcome "<span><%= current_user.name %></span>"</h1>
+        <p class="header-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+      <% else %>
+        <p class="header-link"><%= link_to 'Staff login', new_user_session_path %></p>
+      <% end %>
+    </header>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
