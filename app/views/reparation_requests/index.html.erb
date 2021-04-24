@@ -1,0 +1,33 @@
+<% if current_user %>
+<h1 class="main-subtitle"><%= "#{@store.address} Store Reparation Requests List" %></h1>
+
+<table class="table table--border">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Device</th>
+    <th scope="col">Model Number</th>
+    <th scope="col">Issue</th>
+    <th scope="col">Requested from</th>
+    <th scope="col">Open on</th>
+    <th scope="col">Price</th>
+    <th scope="col">Status</th>
+  </tr>
+  <% @reparation_requests.each do |reparation_request| %>
+    <tr>
+      <td><%= reparation_request.id %></td>
+      <td>
+        <%= Device.find(reparation_request.device).name %> 
+        <%= link_to reparation_request_path(reparation_request) do %>
+          <span class="see-details">view details</span>
+        <% end %>
+      </td>
+      <td><%= reparation_request.model_number %></td>
+      <td><%= "#{reparation_request.issue_description.byteslice(0, 50)}..." %></td>
+      <td><%= reparation_request.requester_city %></td>
+      <td><%= reparation_request.created_at.strftime("%B %d, %Y") %></td>
+      <td><%= reparation_request.price %></td>
+      <td><%= reparation_request.status.capitalize() %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
