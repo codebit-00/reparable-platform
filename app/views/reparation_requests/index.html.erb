@@ -10,7 +10,7 @@
     <th scope="col">Requested from</th>
     <th scope="col">Open on</th>
     <th scope="col">Price</th>
-    <th scope="col">State</th>
+    <th scope="col">Status</th>
   </tr>
   <% @reparation_requests.each do |reparation_request| %>
     <tr>
@@ -26,7 +26,7 @@
       <td><%= reparation_request.requester_city %></td>
       <td><%= reparation_request.created_at.strftime("%B %d, %Y") %></td>
       <td><%= reparation_request.price %></td>
-      <td><%= reparation_request.state.capitalize() %></td>
+      <td><%= reparation_request.status.capitalize() %></td>
     </tr>
   <% end %>
 </table>
