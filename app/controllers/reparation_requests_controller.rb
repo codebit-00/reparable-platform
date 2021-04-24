@@ -6,6 +6,12 @@ class ReparationRequestsController < ApplicationController
     @reparation_requests = @store.reparation_requests
   end
 
+  def show
+    return redirect_to new_reparation_request_path new unless current_user
+
+    @reparation_request = ReparationRequest.find(params[:id])
+  end
+
   def new
     @reparation_request = ReparationRequest.new
   end
