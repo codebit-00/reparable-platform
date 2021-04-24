@@ -1,6 +1,6 @@
 <div class="show-main-container">
   <div class="show-container">
-    <h1>Reparation request ID: <%= @reparation_request.id %> - Status: <span><%= @reparation_request.state.capitalize() %></span> </h2>
+    <h1>Reparation request ID: <%= @reparation_request.id %> - Status: <span><%= @reparation_request.status.capitalize() %></span> </h2>
     <div class="show__section">
       <h2 class="show__section__title">1. Device information</h2>
 
@@ -97,8 +97,8 @@
       <%= form.submit 'Enter price', class: 'button button-price' %>
     <% end %>
     
-    <% if @reparation_request.state == "pending" && @reparation_request.price.to_i > 0 %>
-      <%= link_to change_status_reparation_request_path(@reparation_request, state: "approved", price: :price), method: :patch do %>
+    <% if @reparation_request.status == "pending" && @reparation_request.price.to_i > 0 %>
+      <%= link_to change_status_reparation_request_path(@reparation_request, status: "approved", price: :price), method: :patch do %>
         <button class="button button--approved">Approve</button>
       <% end %>
     <% end %>
