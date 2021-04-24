@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :reparation_requests, except: %i[edit destroy]
 
+  get '/reparation_requests' => 'reparation_requests#index', :as => :user_root
+
   root 'reparation_requests#new'
 end
