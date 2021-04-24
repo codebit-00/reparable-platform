@@ -1,0 +1,106 @@
+<div class="show-main-container">
+  <div class="show-container">
+    <h1>Reparation request ID: <%= @reparation_request.id %> - Status: <span><%= @reparation_request.state.capitalize() %></span> </h2>
+    <div class="show__section">
+      <h2 class="show__section__title">1. Device information</h2>
+
+      <div class="show__section-01">
+        <div class="show__section-01__division">
+          <div class="show__section__field">
+            <h3>Device name</h3>
+            <p><%= Device.find(@reparation_request.device).name %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Model number</h3>
+            <p><%= @reparation_request.model_number %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Purchase or installation date</h3>
+            <p><%= @reparation_request.purchase_installation_date %></p> 
+          </div>
+        </div>
+
+        <div class="show__section-01__division">
+          <div class="show__section__field">
+            <h3>Issue description</h3>
+            <p><%= @reparation_request.issue_description %></p> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="show__section show__section--margin-top">
+      <h2 class="show__section__title">2. Contact information</h2>
+
+      <div class="show__section-02">
+        <div class="show__section-02__division">
+          <div class="show__section__field">
+            <h3>First name</h3>
+            <p><%= @reparation_request.requester_first_name %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Last name</h3>
+            <p><%= @reparation_request.requester_last_name %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Telephone</h3>
+            <p><%= @reparation_request.requester_telephone %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Email</h3>
+            <p><%= @reparation_request.requester_email %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Zip code</h3>
+            <p><%= @reparation_request.requester_zip_code %></p> 
+          </div>
+        </div>
+
+        <div class="show__section-02__division">
+          <div class="show__section__field">
+            <h3>City</h3>
+            <p><%= @reparation_request.requester_city %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>State</h3>
+            <p><%= @reparation_request.requester_state %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Address</h3>
+            <p><%= @reparation_request.requester_address %></p> 
+          </div>
+
+          <div class="show__section__field">
+            <h3>Country</h3>
+            <p><%= @reparation_request.requester_country %></p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="show__actions">
+    <%= link_to reparation_requests_path do %>
+      <button class="button button--back">Back</button>
+    <% end %>
+
+    <%= form_with model: @reparation_request, local: true, class: 'price-form' do |form| %>
+      <span>USD <%= form.text_field :price, class: 'price-input' %></span>
+      <%= form.submit 'Enter price', class: 'button button-price' %>
+    <% end %>
+    
+    <% if @reparation_request.state == "pending" && @reparation_request.price.to_i > 0 %>
+      <%= link_to change_status_reparation_request_path(@reparation_request, state: "approved", price: :price), method: :patch do %>
+        <button class="button button--approved">Approve</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
