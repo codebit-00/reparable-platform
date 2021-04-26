@@ -28,6 +28,22 @@ class ReparationRequestsController < ApplicationController
     end
   end
 
+  def update
+    @reparation_request = ReparationRequest.find(params[:id])
+    if reparation_request_params[:price].present?
+      @reparation_request.update(reparation_request_params)
+    end
+    redirect_to @reparation_request, notice: "The price were updated in: #{@reparation_request.price}"
+  end
+
+  def change_status
+    @reparation_request = ReparationRequest.find(params[:id])
+    if params[:status].present? && ReparationRequest::STATUSES.include?(params[:status].to_sym)
+      @reparation_request.update(status: params[:status])
+    end
+    redirect_to @reparation_request, notice: "Status updated to #{@reparation_request.status}"
+  end
+
   private
 
   def store_with_major_priority
