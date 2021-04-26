@@ -1,0 +1,158 @@
+.show-main-container {
+  width: 100%;
+  height: 100vh;
+  background: var(--white);
+}
+
+.show-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25%;
+  background: var(--white);
+}
+
+.show__section {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--border-gray);
+}
+
+.show__section__title {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--white);
+  background: var(--blue);
+  padding: 8px 16px;
+}
+
+.show__section-01 {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.show__section-02 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.show__section-01__division {
+  width: fit-content;
+}
+
+.show__section-02__division {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.show__section__field {
+  margin: 8px 16px;
+}
+
+.show__section__field h3 {
+  justify-content: left;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--red);
+}
+
+.show__section__field p {
+  justify-content: left;
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--black);
+}
+
+.show-container h1 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.show-container h1 span {
+  color: var(--ligth-blue);
+}
+
+.show__section--margin-top {
+  margin-top: 20px;
+}
+
+.show__actions {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+}
+
+.button {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.button--back {
+  background: var(--ligth-blue);
+}
+
+.button--approved {
+  background: var(--green);
+}
+
+.button--back:hover,
+.button--approved:hover {
+  opacity: 0.8;
+}
+
+.price-form {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.price-form span,
+.price-input {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.price-input {
+  width: 4rem;
+  color: var(--ligth-blue);
+  text-align: center;
+  padding: 4px;
+  border-radius: 6px;
+  border: 3px solid var(--red)
+}
+
+.price-form span {
+  color: var(--dark-gray);
+}
+
+.price-input:focus {
+  outline: none;
+  border: 3px solid var(--green);
+  background: transparent;
+}
+
+.button-price {
+  background: var(--dark-gray);
+  transition: all 300ms;
+}
+
+.button-price:hover {
+  opacity: 0.8;
+}
